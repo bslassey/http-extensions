@@ -5,7 +5,7 @@
 HTTP Working Group                                           I. Grigorik
 Internet-Draft                                                  Y. Weiss
 Intended status: Experimental                                     Google
-Expires: October 2, 2020                                  March 31, 2020
+Expires: October 3, 2020                                   April 1, 2020
 
 
                            HTTP Client Hints
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 1]
+Grigorik & Weiss         Expires October 3, 2020                [Page 1]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
-   This Internet-Draft will expire on October 2, 2020.
+   This Internet-Draft will expire on October 3, 2020.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 2]
+Grigorik & Weiss         Expires October 3, 2020                [Page 2]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
      A.10. Since -09 . . . . . . . . . . . . . . . . . . . . . . . .  11
@@ -165,9 +165,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 3]
+Grigorik & Weiss         Expires October 3, 2020                [Page 3]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
    This document defines a new response header, Accept-CH, that allows
@@ -221,9 +221,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 4]
+Grigorik & Weiss         Expires October 3, 2020                [Page 4]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
    Implementers SHOULD be aware of the passive fingerprinting
@@ -277,9 +277,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 5]
+Grigorik & Weiss         Expires October 3, 2020                [Page 5]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
    For example:
@@ -333,9 +333,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 6]
+Grigorik & Weiss         Expires October 3, 2020                [Page 6]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
    Therefore, features relying on this document to define Client Hint
@@ -389,9 +389,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 7]
+Grigorik & Weiss         Expires October 3, 2020                [Page 7]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
       example, avoid transmission of header fields that can carry higher
@@ -445,9 +445,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 8]
+Grigorik & Weiss         Expires October 3, 2020                [Page 8]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
    Due to request byte size increase, features relying on this document
@@ -501,9 +501,9 @@ Internet-Draft              HTTP Client Hints                 March 2020
 
 
 
-Grigorik & Weiss         Expires October 2, 2020                [Page 9]
+Grigorik & Weiss         Expires October 3, 2020                [Page 9]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
@@ -557,9 +557,9 @@ A.3.  Since -02
 
 
 
-Grigorik & Weiss         Expires October 2, 2020               [Page 10]
+Grigorik & Weiss         Expires October 3, 2020               [Page 10]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
 A.4.  Since -03
@@ -613,9 +613,9 @@ A.11.  Since -10
 
 
 
-Grigorik & Weiss         Expires October 2, 2020               [Page 11]
+Grigorik & Weiss         Expires October 3, 2020               [Page 11]
 
-Internet-Draft              HTTP Client Hints                 March 2020
+Internet-Draft              HTTP Client Hints                 April 2020
 
 
 A.12.  Since -11
@@ -669,4 +669,4 @@ Authors' Addresses
 
 
 
-Grigorik & Weiss         Expires October 2, 2020               [Page 12]
+Grigorik & Weiss         Expires October 3, 2020               [Page 12]
