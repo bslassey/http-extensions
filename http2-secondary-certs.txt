@@ -118,7 +118,7 @@ Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
      7.1.  HTTP/2 SETTINGS_HTTP_CERT_AUTH Setting  . . . . . . . . .  22
      7.2.  New HTTP/2 Frames . . . . . . . . . . . . . . . . . . . .  23
      7.3.  New HTTP/2 Error Codes  . . . . . . . . . . . . . . . . .  23
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  24
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  24
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  25
      8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  25
@@ -1155,6 +1155,11 @@ Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
    send only the extensions that narrowly specify which certificates
    would be acceptable.
 
+   Servers can also learn information about clients using this
+   mechanism.  The hostnames a user agent finds interesting and
+   retrieves certificates for might indicate origins the user has
+   previously accessed.
+
 6.3.  Denial of Service
 
    Failure to provide a certificate for a stream after receiving
@@ -1165,11 +1170,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
    expensive, while generating an invalid signature is computationally
    cheap.  Implementations will require checks for attacks from this
    direction.  Invalid exported authenticators SHOULD be treated as a
-   session error, to avoid further attacks from the peer, though an
-   implementation MAY instead disable HTTP-layer certificates for the
-   current connection instead.
-
-
 
 
 
@@ -1177,6 +1177,10 @@ Bishop, et al.          Expires October 16, 2020               [Page 21]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
 
+
+   session error, to avoid further attacks from the peer, though an
+   implementation MAY instead disable HTTP-layer certificates for the
+   current connection instead.
 
 6.4.  Persistence of Service
 
@@ -1222,10 +1226,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
 
    Name:  SETTINGS_HTTP_CERT_AUTH
 
-   Code:  0xSETTING-TBD
-
-   Initial Value:  0
-
 
 
 
@@ -1233,6 +1233,10 @@ Bishop, et al.          Expires October 16, 2020               [Page 22]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
 
+
+   Code:  0xSETTING-TBD
+
+   Initial Value:  0
 
    Specification:  This document.
 
@@ -1276,10 +1280,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
         | CERTIFICATE_OVERUSED    | 0xERROR-TBD6 | Section 4     |
         +-------------------------+--------------+---------------+
 
-8.  References
-
-
-
 
 
 
@@ -1289,6 +1289,8 @@ Bishop, et al.          Expires October 16, 2020               [Page 23]
 
 Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
 
+
+8.  References
 
 8.1.  Normative References
 
@@ -1336,8 +1338,6 @@ Internet-Draft        Secondary Cert Auth in HTTP/2           April 2020
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
-
-
 
 
 
