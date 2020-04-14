@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-09T04:59:01.437043+00:00",
+  "timestamp": "2020-04-14T19:09:13.349396+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -22127,7 +22127,7 @@
       "id": "MDU6SXNzdWU0NzEzMjY2NzM=",
       "title": "Disentangle the DNS Check argument",
       "url": "https://github.com/httpwg/http-extensions/issues/869",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "MikeBishop",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -22136,8 +22136,8 @@
       ],
       "body": "Add text noting the DNS check / not-check guidance in RFCs 7540 and 8336, respectively.  Explicitly side-step the issue by saying that if you would do a DNS lookup for a hostname in the primary cert, you MUST do the DNS check for a hostname in a secondary cert as well; if you would omit the DNS lookup for a hostname in the primary cert, you MAY omit the DNS check for a hostname in the secondary cert as well.",
       "createdAt": "2019-07-22T20:52:20Z",
-      "updatedAt": "2019-07-22T20:52:20Z",
-      "closedAt": null,
+      "updatedAt": "2020-04-14T19:08:06Z",
+      "closedAt": "2020-04-14T19:08:06Z",
       "comments": []
     },
     {
@@ -22145,7 +22145,7 @@
       "id": "MDU6SXNzdWU0NzEzMzExMDc=",
       "title": "Privacy considerations for client-requested server certificates",
       "url": "https://github.com/httpwg/http-extensions/issues/870",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "MikeBishop",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -22155,8 +22155,8 @@
       ],
       "body": "If a malicious server claims support for a variety of common hostnames for which it doesn't actually possess certificates, browser clients with a long-lived connection to the attacker will probe for certificates when the user attempts to access those sites.  This allows the server to monitor user behavior during the lifetime of the connection, even without valid certificates.\r\n\r\nOne obvious strategy is to probe everything \"interesting\" ASAP after the ORIGIN frame, but that obviously leaks what the client considers interesting, which is its own privacy leak.\r\n\r\nNote that a DNS lookup of claimed hostnames prior to requesting the cert prevents this attack.  Should probably recommend that clients which omit the DNS lookup never solicit secondary server certificates, but probably don't need to mandate anything.",
       "createdAt": "2019-07-22T20:59:08Z",
-      "updatedAt": "2019-07-22T21:07:12Z",
-      "closedAt": null,
+      "updatedAt": "2020-04-14T19:09:06Z",
+      "closedAt": "2020-04-14T19:09:06Z",
       "comments": [
         {
           "author": "davidben",
@@ -27556,6 +27556,30 @@
           "body": "Already fixed in editor's copy",
           "createdAt": "2020-04-07T23:40:30Z",
           "updatedAt": "2020-04-07T23:40:30Z"
+        }
+      ]
+    },
+    {
+      "number": 1149,
+      "id": "MDU6SXNzdWU1OTgxNDI2NDA=",
+      "title": "Insecure IP addresses can overwrite a Secure cookie with an insecure cookie",
+      "url": "https://github.com/httpwg/http-extensions/issues/1149",
+      "state": "CLOSED",
+      "author": "chlily1",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Typically a preexisting Secure cookie cannot be overwritten by an equivalent insecure cookie coming from an insecure source. (\"Leave Secure cookies alone\").\r\n\r\n[RFC 6265bis](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-05#section-5.4) says:\r\n```\r\n   12.  If the cookie's secure-only-flag is not set, and the scheme\r\n        component of request-uri does not denote a \"secure\" protocol,\r\n        then abort these steps and ignore the cookie entirely if the\r\n        cookie store contains one or more cookies that meet all of the\r\n        following criteria:\r\n\r\n        1.  Their name matches the name of the newly-created cookie.\r\n\r\n        2.  Their secure-only-flag is true.\r\n\r\n        3.  Their domain domain-matches the domain of the newly-created\r\n            cookie, or vice-versa.\r\n\r\n        4.  The path of the newly-created cookie path-matches the path\r\n            of the existing cookie.\r\n\r\n        Note: The path comparison is not symmetric, ensuring only that a\r\n        newly-created, non-secure cookie does not overlay an existing\r\n        secure cookie, providing some mitigation against cookie-fixing\r\n        attacks.  That is, given an existing secure cookie named 'a'\r\n        with a path of '/login', a non-secure cookie named 'a' could be\r\n        set for a path of '/' or '/foo', but not for a path of '/login'\r\n        or '/login/en'.\r\n```\r\n\r\nHowever, the [algorithm](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-05#section-5.1.3) for `domain-matches` excludes IP addresses:\r\n```\r\n   A string domain-matches a given domain string if at least one of the\r\n   following conditions hold:\r\n\r\n   o  The domain string and the string are identical.  (Note that both\r\n      the domain string and the string will have been canonicalized to\r\n      lower case at this point.)\r\n\r\n   o  All of the following conditions hold:\r\n\r\n      *  The domain string is a suffix of the string.\r\n\r\n      *  The last character of the string that is not included in the\r\n         domain string is a %x2E (\".\") character.\r\n\r\n      *  The string is a host name (i.e., not an IP address).\r\n```\r\n\r\nThus a cookie such as `A=B; Secure` that was set by `https://1.2.3.4` might be overwritten by an insecure cookie `A=C` that is set by `http://1.2.3.4`.\r\n\r\nThis seems unintentional and undesirable?",
+      "createdAt": "2020-04-10T23:44:38Z",
+      "updatedAt": "2020-04-10T23:45:25Z",
+      "closedAt": "2020-04-10T23:45:25Z",
+      "comments": [
+        {
+          "author": "chlily1",
+          "authorAssociation": "NONE",
+          "body": "Oh, I can't read. Nevermind. This is covered by `The domain string and the string are identical`.",
+          "createdAt": "2020-04-10T23:45:25Z",
+          "updatedAt": "2020-04-10T23:45:25Z"
         }
       ]
     }
@@ -52535,7 +52559,7 @@
       "id": "MDExOlB1bGxSZXF1ZXN0Mzc4MzI3Njcz",
       "title": "SHOULD check DNS for secondary if you would have for primary",
       "url": "https://github.com/httpwg/http-extensions/pull/1069",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "MikeBishop",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -52544,10 +52568,10 @@
       ],
       "body": "Fixes #869.  The intent here is to say that your requirements for trusting a secondary certificate should be at least as strict as for trusting additional names in the primary certificate.",
       "createdAt": "2020-02-21T15:06:15Z",
-      "updatedAt": "2020-02-21T15:06:15Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
+      "updatedAt": "2020-04-14T19:08:07Z",
+      "closedAt": "2020-04-14T19:08:06Z",
+      "mergedAt": "2020-04-14T19:08:06Z",
+      "mergedBy": "MikeBishop",
       "comments": [],
       "reviews": []
     },
@@ -52556,7 +52580,7 @@
       "id": "MDExOlB1bGxSZXF1ZXN0Mzc4MzMxNDM0",
       "title": "Client privacy",
       "url": "https://github.com/httpwg/http-extensions/pull/1070",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "MikeBishop",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -52566,10 +52590,10 @@
       ],
       "body": "Fixes #870.  I believe that @davidben's comment on that issue is already covered by the following section on Denial of Service.",
       "createdAt": "2020-02-21T15:14:12Z",
-      "updatedAt": "2020-02-21T15:14:12Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
+      "updatedAt": "2020-04-14T19:09:08Z",
+      "closedAt": "2020-04-14T19:09:06Z",
+      "mergedAt": "2020-04-14T19:09:06Z",
+      "mergedBy": "MikeBishop",
       "comments": [],
       "reviews": []
     },
