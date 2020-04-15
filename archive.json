@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-14T19:09:13.349396+00:00",
+  "timestamp": "2020-04-15T07:57:02.148667+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -167,6 +167,11 @@
       "name": "samesite",
       "description": "RFC6265bis's `SameSite` cookie attribute.",
       "color": "e28cb6"
+    },
+    {
+      "name": "signatures",
+      "description": "",
+      "color": "fbca04"
     }
   ],
   "issues": [
@@ -26941,9 +26946,17 @@
       ],
       "body": "It is very unclear from the draft how exactly the client should handle a secondary server certificate it rejects. Presumably a bad secondary certificate should not be fatal to streams which don't use it. The draft seems to handwaive at this (though not very clearly, which means uncertainty for the server) in section 4.\r\n\r\nAt the same time, the draft says:\r\n\r\n>   If a client receives a \"PUSH_PROMISE\" referencing an origin for which\r\n>   it has not yet received the server's certificate, this is a fatal\r\n>   connection error (see section 8.2 of [RFC7540]).  To avoid this,\r\n>   servers MUST supply the associated certificates before pushing\r\n>   resources from a different origin.\r\n\r\nThis is inconsistent with that idea. Suppose the server pushes some CERTIFICATE frame along with some resources it thinks the client would want. If the client rejects that certificate, this text implies the client must tear down the entire connection, interrupting unrelated requests.\r\n\r\nA useful heuristic for reasoning through all this would be to consider a client which blindly rejects every secondary certificate. This is especially relevant if the draft does not act on #1087.",
       "createdAt": "2020-03-03T20:48:00Z",
-      "updatedAt": "2020-03-03T20:48:00Z",
+      "updatedAt": "2020-04-14T19:37:21Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "MikeBishop",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The restriction on the server is that it not push unless it has first sent the certificate.  If the client rejects the certificate, clearly it will discard the push; the question is whether the client will be able to differentiate failure-to-send from cert-not-accepted.  That depends on whether you assume that clients will look at the certificates, even if they aren't accepted; otherwise, I suspect that it can't.\r\n\r\nHowever, I think you're right that this is an overreaction.  RFC7540 requires that a PUSH_PROMISE for an unproven origin be treated as a stream error, but doesn't specify on which stream.  The parent stream still seems excessive, since the server can't know for which origins the client considers it authoritative.",
+          "createdAt": "2020-04-14T19:37:21Z",
+          "updatedAt": "2020-04-14T19:37:21Z"
+        }
+      ]
     },
     {
       "number": 1089,
@@ -27508,10 +27521,12 @@
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "digest-headers"
+      ],
       "body": "## I expect\r\n\r\nAn example of using Digest in a request with no payload body.\r\nThere is a misconceptions that Digest does not apply to request with no payload body. \r\n\r\nAs it's not a special case https://github.com/httpwg/http-extensions/issues/849#issuecomment-558096111 for sha-256 we can just use \r\n\r\n```\r\nIn [120]: sha256(b'').hexdigest()                                                                                                                                                                                                            \r\nOut[120]: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'\r\n```\r\n\r\nOther algorithms are free to define a different computation, and the examples will only be tied to sha-256\r\n\r\n",
       "createdAt": "2020-03-17T18:00:16Z",
-      "updatedAt": "2020-03-17T18:01:31Z",
+      "updatedAt": "2020-04-15T01:23:03Z",
       "closedAt": null,
       "comments": []
     },
@@ -55387,6 +55402,105 @@
           "updatedAt": "2020-03-31T15:37:12Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 1150,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzMzY0Mzky",
+      "title": "Add references to Structured Trailers",
+      "url": "https://github.com/httpwg/http-extensions/pull/1150",
+      "state": "MERGED",
+      "author": "stephenmcgruer",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "header-structure"
+      ],
+      "body": "Editorial: add one reference to Structured Trailers in a list of the types, and\r\ncorrect what appears to be a typo of Structured Field --> Structured Trailer.",
+      "createdAt": "2020-04-14T19:12:20Z",
+      "updatedAt": "2020-04-15T02:22:56Z",
+      "closedAt": "2020-04-15T02:22:56Z",
+      "mergedAt": "2020-04-15T02:22:56Z",
+      "mergedBy": "mnot",
+      "comments": [
+        {
+          "author": "stephenmcgruer",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Happened to spot these when perusing the structured headers spec; apologies if I've misread and the original text was correct.",
+          "createdAt": "2020-04-14T19:13:37Z",
+          "updatedAt": "2020-04-14T19:13:37Z"
+        },
+        {
+          "author": "mnot",
+          "authorAssociation": "MEMBER",
+          "body": "Thanks!",
+          "createdAt": "2020-04-15T02:22:52Z",
+          "updatedAt": "2020-04-15T02:22:52Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 1151,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzMzgzMzMw",
+      "title": "Split setting into client and server values",
+      "url": "https://github.com/httpwg/http-extensions/pull/1151",
+      "state": "OPEN",
+      "author": "MikeBishop",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "secondary-certs"
+      ],
+      "body": "Fixes #1087.  Instead of a four-byte exporter, uses an eight-byte exporter and splits into two values.  Support for exchanging server certificates and client certificates is now indicated separately.",
+      "createdAt": "2020-04-14T19:55:30Z",
+      "updatedAt": "2020-04-14T20:33:55Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1152,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzNDAwMDg1",
+      "title": "Secondary Cert error handling",
+      "url": "https://github.com/httpwg/http-extensions/pull/1152",
+      "state": "OPEN",
+      "author": "MikeBishop",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "secondary-certs"
+      ],
+      "body": "Fixes #1088, though I'm not sure it's yet precise enough.  There are three general classes of errors:\r\n\r\n- The peer **did something wrong**.  There are relatively few of these possible -- indicating more certificates to use than were requested, or more than one unsolicited certificate; sending CERTIFICATE_NEEDED to a peer that didn't indicate support for this extension.\r\n- The **authenticator is corrupt**.  This might indicate a problem with the TLS connection.\r\n- The **certificate isn't acceptable**.  There are lots of reasons this might happen.\r\n\r\nThe first two should be at least stream and possibly connection errors.  The latter should be handled at the HTTP layer, but previously had error codes defined for them.  This PR removes several error codes and recommends handling at the HTTP layer if the certificate isn't accepted.",
+      "createdAt": "2020-04-14T20:33:30Z",
+      "updatedAt": "2020-04-14T20:36:01Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1153,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzNDA0NjIx",
+      "title": "Confused deputy should be clear",
+      "url": "https://github.com/httpwg/http-extensions/pull/1153",
+      "state": "OPEN",
+      "author": "MikeBishop",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "secondary-certs"
+      ],
+      "body": "Automatic use of client-proffered certificates was removed a while back; clients can indicate which certificate (if any) they want the server to consider by sending a `USE_CERTIFICATE` frame with the `UNSOLICITED` flag set.\r\n\r\nThere was text talking about automatic use of the server-proffered certificates, but there wasn't corresponding text disallowing that behavior for client certificates, simply the absence of permission.  This PR forbids considering \"available\" certificates until the client indicates which certificate to use.\r\n\r\nFixes #1090.",
+      "createdAt": "2020-04-14T20:44:05Z",
+      "updatedAt": "2020-04-14T20:44:57Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
       "reviews": []
     }
   ]
