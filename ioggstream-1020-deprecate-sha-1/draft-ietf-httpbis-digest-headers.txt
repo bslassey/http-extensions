@@ -147,6 +147,7 @@ Internet-Draft               Digest Headers                   April 2020
    Changes . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  31
      E.1.  Since draft-ietf-httpbis-digest-headers-00  . . . . . . .  31
      E.2.  Since draft-ietf-httpbis-digest-headers-01  . . . . . . .  32
+     E.3.  Since draft-ietf-httpbis-digest-headers-02  . . . . . . .  32
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  32
 
 1.  Introduction
@@ -161,7 +162,6 @@ Internet-Draft               Digest Headers                   April 2020
    An HTTP-level integrity mechanism that operates independent of
    transfer can be used to detect programming errors and/or corruption
    of data at rest, be used across multiple hops in order to provide
-   end-to-end integrity guarantees, aid fault diagnosis across hops and
 
 
 
@@ -170,6 +170,7 @@ Polli & Pardue          Expires October 17, 2020                [Page 3]
 Internet-Draft               Digest Headers                   April 2020
 
 
+   end-to-end integrity guarantees, aid fault diagnosis across hops and
    system boundaries, and can be used to validate integrity when
    reconstructing a resource fetched using different HTTP connections.
 
@@ -215,7 +216,6 @@ Internet-Draft               Digest Headers                   April 2020
    no content codings (see Section 6.1.2 of
    [I-D.ietf-httpbis-semantics]) two more algorithms are added ("ID-SHA-
    256" and "ID-SHA-512").
-
 
 
 
@@ -1759,6 +1759,10 @@ E.2.  Since draft-ietf-httpbis-digest-headers-01
    o  Editorial refactoring, moving headers sections up. #1109-#1112,
       #1116, #1117, #1122-#1124
 
+E.3.  Since draft-ietf-httpbis-digest-headers-02
+
+   o  Deprecate SHA-1 #1154
+
 Authors' Addresses
 
    Roberto Polli
@@ -1771,10 +1775,6 @@ Authors' Addresses
    Cloudflare
 
    Email: lucaspardue.24.7@gmail.com
-
-
-
-
 
 
 
