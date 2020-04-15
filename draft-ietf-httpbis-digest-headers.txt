@@ -282,8 +282,9 @@ Polli & Pardue          Expires October 17, 2020                [Page 5]
 Internet-Draft               Digest Headers                   April 2020
 
 
-   The definition "validator" in this document is to be interpreted as
-   described in Section 10.2 of [I-D.ietf-httpbis-semantics].
+   The definition "validator fields" in this document is to be
+   interpreted as described in Section 10.2 of
+   [I-D.ietf-httpbis-semantics].
 
 2.  Representation Digest
 
@@ -325,11 +326,10 @@ Internet-Draft               Digest Headers                   April 2020
       Digest = "Digest" ":" OWS 1#representation-data-digest
 
    The resource is specified by the effective request URI and any
-   "validator" contained in the message.
+   "validator field" contained in the message.
 
    The relationship between Content-Location (see Section 6.2.5 of
    [I-D.ietf-httpbis-semantics]) and Digest is demonstrated in
-   Section 9.7.  A comprehensive set of examples showing the impacts of
 
 
 
@@ -338,6 +338,7 @@ Polli & Pardue          Expires October 17, 2020                [Page 6]
 Internet-Draft               Digest Headers                   April 2020
 
 
+   Section 9.7.  A comprehensive set of examples showing the impacts of
    representation metadata, payload transformations and HTTP methods on
    Digest is provided in Section 9 and Section 10.
 
@@ -385,7 +386,6 @@ Internet-Draft               Digest Headers                   April 2020
    highest qvalue.
 
    Two examples of its use are
-
 
 
 
