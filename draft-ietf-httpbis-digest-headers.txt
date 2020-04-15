@@ -142,12 +142,12 @@ Internet-Draft               Digest Headers                   April 2020
      13.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  27
    Appendix A.  Resource Representation and Representation-Data  . .  28
    Appendix B.  FAQ  . . . . . . . . . . . . . . . . . . . . . . . .  30
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  30
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  31
    Code Samples  . . . . . . . . . . . . . . . . . . . . . . . . . .  31
    Changes . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  32
      E.1.  Since draft-ietf-httpbis-digest-headers-00  . . . . . . .  32
-     E.2.  Since draft-ietf-httpbis-digest-headers-01  . . . . . . .  32
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  32
+     E.2.  Since draft-ietf-httpbis-digest-headers-01  . . . . . . .  33
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  33
 
 1.  Introduction
 
@@ -1533,7 +1533,12 @@ Appendix A.  Resource Representation and Representation-Data
    When the payload body contains non-printable characters (eg. when it
    is compressed) it is shown as base64-encoded string.
 
-   Here is a gzip-compressed json object
+   A request with a json object without any content coding &#65532;
+   Request: &#65532; ~~~ PUT /entries/1234 HTTP/1.1 Content-Type:
+   application/json Content-Encoding: identity
+
+   {"hello": "world"} ~~~ &#65532; Here is a gzip-compressed json object
+   using a content coding
 
    Request:
 
@@ -1557,11 +1562,6 @@ Appendix A.  Resource Representation and Representation-Data
 
    Request:
 
-   GET /entries/1234 HTTP/1.1
-   Range: bytes=1-7
-
-
-   Response:
 
 
 
@@ -1569,6 +1569,12 @@ Polli & Pardue          Expires October 17, 2020               [Page 28]
 
 Internet-Draft               Digest Headers                   April 2020
 
+
+   GET /entries/1234 HTTP/1.1
+   Range: bytes=1-7
+
+
+   Response:
 
    HTTP/1.1 206 Partial Content
    Content-Encoding: gzip
@@ -1609,12 +1615,6 @@ Internet-Draft               Digest Headers                   April 2020
 
    Response:
 
-   HTTP/1.1 201 Created
-   Content-Type: application/json
-   Content-Location: /authors/123
-   Location: /authors/123
-
-   {"id": "123", "author": "Camilleri"}
 
 
 
@@ -1625,6 +1625,13 @@ Polli & Pardue          Expires October 17, 2020               [Page 29]
 
 Internet-Draft               Digest Headers                   April 2020
 
+
+   HTTP/1.1 201 Created
+   Content-Type: application/json
+   Content-Location: /authors/123
+   Location: /authors/123
+
+   {"id": "123", "author": "Camilleri"}
 
 Appendix B.  FAQ
 
@@ -1668,13 +1675,6 @@ Appendix B.  FAQ
        ID-SHA-512 which allows to send a checksum of a resource
        representation with no content codings applied.
 
-Acknowledgements
-
-   The vast majority of this document is inherited from [RFC3230], so
-   thanks to J.  Mogul and A.  Van Hoff for their great work.  The
-   original idea of refreshing this document arose from an interesting
-
-
 
 
 Polli & Pardue          Expires October 17, 2020               [Page 30]
@@ -1682,6 +1682,11 @@ Polli & Pardue          Expires October 17, 2020               [Page 30]
 Internet-Draft               Digest Headers                   April 2020
 
 
+Acknowledgements
+
+   The vast majority of this document is inherited from [RFC3230], so
+   thanks to J.  Mogul and A.  Van Hoff for their great work.  The
+   original idea of refreshing this document arose from an interesting
    discussion with M.  Nottingham, J.  Yasskin and M.  Thomson when
    reviewing the MICE content coding.
 
@@ -1697,6 +1702,41 @@ Code Samples
    these are formatted as base64.  This function could be adapted to
    other algorithms and should take into account their specific
    formatting rules.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Polli & Pardue          Expires October 17, 2020               [Page 31]
+
+Internet-Draft               Digest Headers                   April 2020
+
 
    import base64, json, hashlib, brotli
 
@@ -1727,17 +1767,6 @@ Code Samples
    # Identity | sha512 | b'WZDPaVn/7XgHaAy8pmojAkGWoRx2UFChF41A2s
    vX+TaPm+AbwAgBWnrIiYllu7BNNyealdVLvRwE\nmTHWXvJwew==\n'
 
-
-
-
-
-
-
-Polli & Pardue          Expires October 17, 2020               [Page 31]
-
-Internet-Draft               Digest Headers                   April 2020
-
-
 Changes
 
    _RFC Editor: Please remove this section before publication._
@@ -1757,6 +1786,13 @@ E.1.  Since draft-ietf-httpbis-digest-headers-00
    o  Update CRC32C value in IANA table #828
 
    o  Use when acting on resources (POST, PATCH) #853
+
+
+
+Polli & Pardue          Expires October 17, 2020               [Page 32]
+
+Internet-Draft               Digest Headers                   April 2020
+
 
    o  Added Relationship with SRI, draft Use Cases #868, #971
 
@@ -1789,4 +1825,24 @@ Authors' Addresses
 
 
 
-Polli & Pardue          Expires October 17, 2020               [Page 32]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Polli & Pardue          Expires October 17, 2020               [Page 33]
