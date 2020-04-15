@@ -180,17 +180,16 @@ Internet-Draft      Structured Field Values for HTTP          April 2020
    a concrete serialization for expressing that model in HTTP [RFC7230]
    header and trailer fields.
 
-   A HTTP field that is defined as a "Structured Header" (or "Structured
-   Trailer", respectively; if the field can be either, it is a
-   "Structured Field") uses the types defined in this specification to
-   define its syntax and basic handling rules, thereby simplifying both
-   its definition by specification writers and handling by
-   implementations.
+   A HTTP field that is defined as a "Structured Header" or "Structured
+   Trailer" (if the field can be either, it is a "Structured Field")
+   uses the types defined in this specification to define its syntax and
+   basic handling rules, thereby simplifying both its definition by
+   specification writers and handling by implementations.
 
    Additionally, future versions of HTTP can define alternative
    serializations of the abstract model of these structures, allowing
-   fields that use it to be transmitted more efficiently without being
-   redefined.
+   fields that use that model to be transmitted more efficiently without
+   being redefined.
 
    Note that it is not a goal of this document to redefine the syntax of
    existing HTTP fields; the mechanisms described herein are only
@@ -218,6 +217,7 @@ Internet-Draft      Structured Field Values for HTTP          April 2020
 
    In other words, strict processing is an intentional feature of this
    specification; it allows non-conformant input to be discovered and
+
 
 
 
@@ -394,6 +394,7 @@ Nottingham & Kamp       Expires October 17, 2020                [Page 7]
 Internet-Draft      Structured Field Values for HTTP          April 2020
 
 
+   --8<--
    42. Foo-Example Header
 
    The Foo-Example HTTP header field conveys information about how
@@ -422,6 +423,7 @@ Internet-Draft      Structured Field Values for HTTP          April 2020
    For example:
 
      Foo-Example: 2; foourl="https://foo.example.com/"
+   -->8--
 
 3.  Structured Data Types
 
@@ -432,15 +434,13 @@ Internet-Draft      Structured Field Values for HTTP          April 2020
    In summary:
 
    o  There are three top-level types that a HTTP field can be defined
-      as; Lists, Dictionaries, and Items.
+      as: Lists, Dictionaries, and Items.
 
    o  Lists and Dictionaries are containers; their members can be Items
-      or Inner Lists (which are themselves lists of items).
+      or Inner Lists (which are themselves arrays of Items).
 
    o  Both Items and Inner Lists can be parameterized with key/value
       pairs.
-
-
 
 
 
@@ -508,13 +508,13 @@ Internet-Draft      Structured Field Values for HTTP          April 2020
 
    Inner Lists are denoted by surrounding parenthesis, and have their
    values delimited by a single space.  A field whose value is defined
-   as a list of Inner Lists of Strings could look like:
+   as a List of Inner Lists of Strings could look like:
 
    Example-StrListListHeader: ("foo" "bar"), ("baz"), ("bat" "one"), ()
 
    Note that the last member in this example is an empty Inner List.
 
-   A header field whose value is defined as a list of Inner Lists with
+   A header field whose value is defined as a List of Inner Lists with
    Parameters at both levels could look like:
 
    Example-ListListParam: ("foo"; a=1;b=2);lvl=5, ("bar" "baz");lvl=1
@@ -766,7 +766,7 @@ Internet-Draft      Structured Field Values for HTTP          April 2020
 
    Parsers MUST support Tokens with at least 512 characters.
 
-   Note that Token allows the characters as the "token" ABNF rule
+   Note that Token allows the same characters as the "token" ABNF rule
    defined in [RFC7230], with the exceptions that the first character is
    required to be either ALPHA or "*", and ":" and "/" are also allowed
    in subsequent characters.
