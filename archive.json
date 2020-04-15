@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-15T07:57:02.148667+00:00",
+  "timestamp": "2020-04-15T15:58:41.317626+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -21684,9 +21684,9 @@
       "labels": [
         "digest-headers"
       ],
-      "body": "## I expect\r\n\r\nTo better detail the usage of `Digest` in signatures, including:\r\n\r\n- what should be included in signature for integrity (representation metadata)\r\n- issues with signing partial representations (eg. Range-Request, PATCH, ..)\r\n- using strong crypto algorithms\r\n\r\nThis should be done:\r\n\r\n- respecting the dependency model is that a signature doesn't need to include a digest but it can;\r\n- don't explain too much of signature risks inverting the dependency;\r\n- add useful guidance that is relevant to Digest and expected usages but without also defining the expected usages completely.\r\n\r\n\r\n## Notes\r\n\r\nFor now, we only warn that:\r\n\r\n- you need a transport-layer integrity mechanism for the whole message;\r\n- you should sign the whole representation (data + metadata);\r\n- you should avoid broken crypto algorithms.\r\n\r\n## Questions\r\n\r\n- consider signing `Content-Length` too ([it's a representation-metadata in http-core](https://tools.ietf.org/html/draft-ietf-httpbis-semantics-04#section-6.2)), though it would eliminate the ability to do things like chunked transfer-encoding, which is quite common. @dlongley\r\n\r\n## Previous discussions\r\n\r\nWhat we have today is probably sufficient but we're open to compelling reasons on what would be really helpful to define in this document.\r\n\r\nThe followings may be out-of-scope:\r\n\r\n  - [length-extension attack on the signature](https://en.wikipedia.org/wiki/Length_extension_attack): Digest should not be subject to length extension attacks because **it doesn't provide a proof of origin**;\r\n  - which other signature data unrelated to `Digest` (eg. timestamp, method & co)\r\n",
+      "body": "## I expect\r\n\r\nTo better detail the usage of `Digest` in signatures, including:\r\n\r\n- [x] you need a transport-layer integrity mechanism for the whole message;\r\n- [x] what should be included in signature for integrity (representation metadata affecting digest-algorithms)\r\n- [ ] issues with signing partial representations (eg. Range-Request, PATCH, ..)\r\n- [x] using strong crypto algorithms\r\n\r\nThis should be done:\r\n\r\n- [ ] respecting the dependency model is that a signature doesn't need to include a digest but it can;\r\n- [ ] don't explain too much of signature risks inverting the dependency;\r\n- [ ] add useful guidance that is relevant to Digest and expected usages but without also defining the expected usages completely.\r\n\r\n## Questions\r\n\r\n- consider signing `Content-Length` too ([it's a representation-metadata in http-core](https://tools.ietf.org/html/draft-ietf-httpbis-semantics-04#section-6.2)), though it would eliminate the ability to do things like chunked transfer-encoding, which is quite common. @dlongley\r\n\r\n## Previous discussions\r\n\r\nWhat we have today is probably sufficient but we're open to compelling reasons on what would be really helpful to define in this document.\r\n\r\nThe followings may be out-of-scope:\r\n\r\n  - [length-extension attack on the signature](https://en.wikipedia.org/wiki/Length_extension_attack): Digest should not be subject to length extension attacks because **it doesn't provide a proof of origin**;\r\n  - which other signature data unrelated to `Digest` (eg. timestamp, method & co)\r\n",
       "createdAt": "2019-07-09T14:53:27Z",
-      "updatedAt": "2019-07-10T08:02:08Z",
+      "updatedAt": "2020-04-15T15:20:19Z",
       "closedAt": null,
       "comments": []
     },
@@ -21845,7 +21845,7 @@
       "id": "MDU6SXNzdWU0NjYyMTUwNzI=",
       "title": "Digest should use http-core or rfc 723x?",
       "url": "https://github.com/httpwg/http-extensions/issues/854",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -21855,8 +21855,8 @@
       ],
       "body": "## Task\r\n\r\nShould we base on 723x or [http-core](https://github.com/httpwg/http-core) ?\r\nAre there changes in http-core that modify or improve Digest definition (eg. terminology, ...)?\r\n\r\n",
       "createdAt": "2019-07-10T09:55:57Z",
-      "updatedAt": "2019-08-09T09:45:57Z",
-      "closedAt": null,
+      "updatedAt": "2020-04-15T14:30:37Z",
+      "closedAt": "2020-04-15T14:30:37Z",
       "comments": [
         {
           "author": "reschke",
@@ -21864,6 +21864,13 @@
           "body": "Depends on publication timing.\r\n\r\nI don't expect -core to change anything that would effect this spec.",
           "createdAt": "2019-07-10T09:57:21Z",
           "updatedAt": "2019-07-10T09:57:21Z"
+        },
+        {
+          "author": "ioggstream",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "digest references moved to http-core. #1140 ",
+          "createdAt": "2020-04-15T14:30:37Z",
+          "updatedAt": "2020-04-15T14:30:37Z"
         }
       ]
     },
@@ -22208,9 +22215,9 @@
       "labels": [
         "digest-headers"
       ],
-      "body": "## I expect\r\n\r\nMore descriptive Digest use-cases.\r\n\r\n## Note\r\n\r\nDigest is used:\r\n\r\n- [x] Digest is usually combined with some mechanism to protect HTTP metadata. \r\nThis allows for L7 protections that transcend transport. See [draft-ietf-httpbis-digest-headers.md#L129](https://github.com/httpwg/http-extensions/blame/master/draft-ietf-httpbis-digest-headers.md#L129)\r\n\r\n- [x] you could compose a resource from partial content \r\n   retrieved from different sources and validate \r\n  the resource's integrity before passing it to\r\n  application for processing. See [draft-ietf-httpbis-digest-headers.md#L686](https://github.com/httpwg/http-extensions/blame/master/draft-ietf-httpbis-digest-headers.md#L686)\r\n\r\n- [ ] in web payments APIs, including EU PSD2 directive via [http-signatures](https://tools.ietf.org/html/draft-cavage-http-signatures-11)\r\n- [ ] in MICE content-coding;\r\n- [ ] in [webpackage](https://github.com/WICG/webpackage) (via MICE)\r\n\r\n## Questions\r\n\r\n- We can highlight more the concept of \"Digest as a Signature building block\" in the use-cases\r\n- Should we reference other I-D like http-signatures, MICE and webpackage in the spec\r\n  to clarify use cases?\r\n\r\n@jyasskin @royfielding issue reopen here from https://github.com/ioggstream/draft-polli-resource-digests-http/issues/15",
+      "body": "## I expect\r\n\r\nMore descriptive Digest use-cases.\r\n\r\n## Note\r\n\r\nDigest is used:\r\n\r\n- [x] Digest is usually combined with some mechanism to protect HTTP metadata. \r\nThis allows for L7 protections that transcend transport. See [draft-ietf-httpbis-digest-headers.md#L129](https://github.com/httpwg/http-extensions/blame/master/draft-ietf-httpbis-digest-headers.md#L129)\r\n\r\n- [x] you could compose a resource from partial content \r\n   retrieved from different sources and validate \r\n  the resource's integrity before passing it to\r\n  application for processing. See [draft-ietf-httpbis-digest-headers.md#L686](https://github.com/httpwg/http-extensions/blame/master/draft-ietf-httpbis-digest-headers.md#L686)\r\n\r\n- [ ] in web payments APIs, including EU PSD2 directive via [http-signatures](https://tools.ietf.org/html/draft-cavage-http-signatures-11)\r\n- [x] in MICE content-coding;\r\n- [ ] in [webpackage](https://github.com/WICG/webpackage) (via MICE)\r\n\r\n## Questions\r\n\r\n- We can highlight more the concept of \"Digest as a Signature building block\" in the use-cases\r\n- Should we reference other I-D like http-signatures (now under http-extension), MICE and webpackage in the spec\r\n  to clarify use cases?\r\n\r\n@jyasskin @royfielding issue reopened here from https://github.com/ioggstream/draft-polli-resource-digests-http/issues/15",
       "createdAt": "2019-07-23T12:25:15Z",
-      "updatedAt": "2019-07-23T12:49:42Z",
+      "updatedAt": "2020-04-15T15:48:07Z",
       "closedAt": null,
       "comments": []
     },
@@ -22325,9 +22332,9 @@
       "labels": [
         "digest-headers"
       ],
-      "body": "## Suggestion\r\n\r\nMention `digest` usage with `Transfer-Encoding` and trailers\r\n\r\n * [ ] use with transfer coding should not affect `digest` because it's not a property of the representation;\r\n * [ ] use with multiple transfer codings (eg with intermediaries?) should not affect `digest` too;\r\n * [ ] caveats with transfer codings, trailers and signatures;\r\n\r\n\r\n## Considerations\r\n\r\n- sending `digest` in HTTP trailers may help the sender in dinamically calculating `digest-value`\r\n  while streaming content;\r\n- this only work if it's the Origin-Server to apply the `Transfer-Coding`;\r\n- this may not work for all  `digest-algorithms`, eg. see [mi-sha256 in MICE I-D](https://github.com/martinthomson/http-mice/blob/master/draft-thomson-http-mice.md) for a counter-example); @martinthomson @jyasskin \r\n- a clarification on using `Digest` with `Transfer-Encoding` should be added before adding this;\r\n\r\n\r\n## Notes\r\n\r\n- Suggested in https://lists.w3.org/Archives/Public/ietf-http-wg/2019JulSep/0087.html\r\n- being transfer coding a representation manipulation assimilated in this spec to range-requests  co, we should provide the following examples:\r\n\r\n",
+      "body": "## Suggestion\r\n\r\nMention `digest` usage with `Transfer-Encoding` and trailers\r\n\r\n * [ ] use with transfer coding should not affect `digest` because it's not a property of the representation;\r\n * [ ] use with multiple transfer codings (eg with intermediaries?) should not affect `digest` too;\r\n * [ ] caveats with transfer codings, trailers and signatures;\r\n\r\n\r\n## Considerations\r\n\r\n- sending `digest` in HTTP trailers may help the sender in dinamically calculating `digest-value`\r\n  while streaming content;\r\n- this only work if it's the Origin-Server to apply the `Transfer-Coding`;\r\n- [ ] this may not work for all  `digest-algorithms`, eg. see [mi-sha256 in MICE I-D](https://github.com/martinthomson/http-mice/blob/master/draft-thomson-http-mice.md) for a counter-example); @martinthomson @jyasskin \r\n- a clarification on using `Digest` with `Transfer-Encoding` should be added before adding this;\r\n\r\n\r\n## Notes\r\n\r\n- Suggested in https://lists.w3.org/Archives/Public/ietf-http-wg/2019JulSep/0087.html\r\n- being transfer coding a representation manipulation assimilated in this spec to range-requests  co, we should provide the following examples:\r\n\r\n",
       "createdAt": "2019-07-31T16:22:04Z",
-      "updatedAt": "2019-08-09T09:44:34Z",
+      "updatedAt": "2020-04-15T15:49:26Z",
       "closedAt": null,
       "comments": [
         {
@@ -54011,7 +54018,7 @@
       "id": "MDExOlB1bGxSZXF1ZXN0Mzg0NTY4Mzky",
       "title": "Integrate an example without content coding.",
       "url": "https://github.com/httpwg/http-extensions/pull/1114",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -54020,10 +54027,10 @@
       ],
       "body": "## This PR\r\n\r\nadds an example without content coding",
       "createdAt": "2020-03-06T00:26:06Z",
-      "updatedAt": "2020-03-17T14:05:16Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
+      "updatedAt": "2020-04-15T14:23:35Z",
+      "closedAt": "2020-04-15T14:23:12Z",
+      "mergedAt": "2020-04-15T14:23:12Z",
+      "mergedBy": "LPardue",
       "comments": [
         {
           "author": "ioggstream",
@@ -54038,6 +54045,20 @@
           "body": "The change affects a section that was moved toward the end of the document. So rebasing will address my earlier comment. I see the utility in the example but I'll leave it up to you if you want to merge or not.",
           "createdAt": "2020-03-17T14:05:16Z",
           "updatedAt": "2020-03-17T14:05:16Z"
+        },
+        {
+          "author": "ioggstream",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@LPardue we moved this part below, so merge is straightforward. Feel free to press the button :)",
+          "createdAt": "2020-04-15T14:14:45Z",
+          "updatedAt": "2020-04-15T14:14:45Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "cheers!\r\n",
+          "createdAt": "2020-04-15T14:23:35Z",
+          "updatedAt": "2020-04-15T14:23:35Z"
         }
       ],
       "reviews": [
@@ -54057,7 +54078,7 @@
               "originalPosition": 4,
               "body": "```suggestion\r\nA request with a json object without any content coding\r\n```",
               "createdAt": "2020-03-06T10:42:39Z",
-              "updatedAt": "2020-03-06T11:06:10Z"
+              "updatedAt": "2020-04-15T14:12:56Z"
             }
           ]
         }
@@ -55109,7 +55130,7 @@
       "id": "MDExOlB1bGxSZXF1ZXN0Mzg5NzM0NDA4",
       "title": "Replace validator -> validator fields",
       "url": "https://github.com/httpwg/http-extensions/pull/1142",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -55118,10 +55139,10 @@
       ],
       "body": "## This PR\r\n\r\n\r\n\"validator\" refers to validator fields used in preconditions. The term validator fields seems more faithful to the original cache-validators in RFC3230.\r\n\r\n## See\r\n\r\nhttps://github.com/httpwg/http-core/blob/master/draft-ietf-httpbis-semantics-latest.xml#L9288\r\n\r\nand\r\n\r\n\r\nhttps://tools.ietf.org/html/draft-ietf-httpbis-semantics-07#section-10.2",
       "createdAt": "2020-03-17T09:56:01Z",
-      "updatedAt": "2020-03-17T17:32:03Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
+      "updatedAt": "2020-04-15T14:15:07Z",
+      "closedAt": "2020-04-15T14:15:06Z",
+      "mergedAt": "2020-04-15T14:15:06Z",
+      "mergedBy": "ioggstream",
       "comments": [],
       "reviews": [
         {
@@ -55497,6 +55518,90 @@
       "body": "Automatic use of client-proffered certificates was removed a while back; clients can indicate which certificate (if any) they want the server to consider by sending a `USE_CERTIFICATE` frame with the `UNSOLICITED` flag set.\r\n\r\nThere was text talking about automatic use of the server-proffered certificates, but there wasn't corresponding text disallowing that behavior for client certificates, simply the absence of permission.  This PR forbids considering \"available\" certificates until the client indicates which certificate to use.\r\n\r\nFixes #1090.",
       "createdAt": "2020-04-14T20:44:05Z",
       "updatedAt": "2020-04-14T20:44:57Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1154,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzNzkzOTEz",
+      "title": "Fix: #1020. Deprecate sha-1",
+      "url": "https://github.com/httpwg/http-extensions/pull/1154",
+      "state": "OPEN",
+      "author": "ioggstream",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "## This PR\r\n\r\nDeprecates SHA-1 as it's now vulnerable to collisions.\r\n\r\nFixes: #1020 ",
+      "createdAt": "2020-04-15T14:27:22Z",
+      "updatedAt": "2020-04-15T15:57:53Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1155,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzODIwNTY1",
+      "title": "Fix: #1143. Example of an empty payload body.",
+      "url": "https://github.com/httpwg/http-extensions/pull/1155",
+      "state": "OPEN",
+      "author": "ioggstream",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "## This PR\r\n\r\n- adds an example of a request with no payload body (eg. HEAD)\r\n- mention an use-case in the Signature section.\r\n\r\nFixes: #1143 ",
+      "createdAt": "2020-04-15T15:10:15Z",
+      "updatedAt": "2020-04-15T15:11:37Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [
+        {
+          "author": "ioggstream",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@martinthomson do you think this is consistent with content-coding like aes128gcm?",
+          "createdAt": "2020-04-15T15:11:37Z",
+          "updatedAt": "2020-04-15T15:11:37Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 1156,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzODI5MTU3",
+      "title": "Update 7231->httpbis-semantics",
+      "url": "https://github.com/httpwg/http-extensions/pull/1156",
+      "state": "OPEN",
+      "author": "ioggstream",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "## This PR\r\n\r\nUpdates a reference 7231->httpbis-semantics",
+      "createdAt": "2020-04-15T15:24:16Z",
+      "updatedAt": "2020-04-15T15:24:16Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1157,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDAzODQ0OTM2",
+      "title": "Start mentioning trailers. See #884.",
+      "url": "https://github.com/httpwg/http-extensions/pull/1157",
+      "state": "OPEN",
+      "author": "ioggstream",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "## This PR\r\n\r\nMention trailers.\r\n\r\nSee #884",
+      "createdAt": "2020-04-15T15:51:47Z",
+      "updatedAt": "2020-04-15T15:51:55Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
