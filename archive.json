@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-20T04:28:47.755798+00:00",
+  "timestamp": "2020-04-20T13:30:21.266915+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -27339,9 +27339,9 @@
       "labels": [
         "6265bis"
       ],
-      "body": "I have implemented most of rfc6265bis from scratch for an HTTP client library, using the algorithms described in Section 5. I have found a few cases in WPT's `http-state` suite that do not pass and seem to go against the current editor draft of rfc6265bis (or vice versa). I figured this would be useful to share:\r\n\r\n* attribute0023: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/attribute0023-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/attribute0023-expected) _The current spec takes the last path while the test expects the first path to be used?_\r\n* chromium0009: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0009-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0009-expected) _The current spec accepts this with the cookie name being empty._\r\n* chromium0010: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0010-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0010-expected) _The current spec accepts this with the cookie name being empty._\r\n* chromium0012: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0012-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0012-expected) _The current spec accepts this with the cookie name being empty._\r\n* disabled-chromium0020: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0020-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0020-expected) _The current spec accepts this with the cookie name being empty. Maybe this is a test of Chromium's limit on cookie names, but the current spec doesn't parse it as a name._\r\n* disabled-chromium0022: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0022-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0022-expected) _I'm not sure what should be expected to be honest._\r\n* mozilla0012: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0012-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0012-expected) _I expect the second Set-Cookie to also be sent back to the server, with an empty name._\r\n* mozilla0014: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0014-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0014-expected) _The current spec accepts this with the cookie name being empty._\r\n* mozilla0015: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0015-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0015-expected) _The current spec accepts this with the cookie names being empty._\r\n* mozilla0016: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0016-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0016-expected) _The current spec accepts this with the cookie names being empty._\r\n* mozilla0017: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0017-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0017-expected) _The current spec accepts this with the cookie names being empty, except for the last Set-Cookie which has a name provided._\r\n* name0017: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0017-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0017-expected) _The current spec accepts this with the cookie name being empty and the value everything after the first =._\r\n* name0023: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0023-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0023-expected) _The current spec accepts this with the cookie name being empty._\r\n* name0025: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0025-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0025-expected) _The current spec accepts this with the cookie name being empty and the value everything after the first =._\r\n* name0028: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0028-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0028-expected) _The current spec accepts this with the cookie name being empty and the value everything after the first =._\r\n* name0031: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0031-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0031-expected) ~~The current spec accepts this with the cookie name being `\"foo;bar\"` and the value everything after the first =.~~\r\n* name0032: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0032-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0032-expected) ~~The current spec accepts this with the cookie name being `\"foo\\\"bar;baz\"` and the value everything after the first =.~~\r\n* name0033: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0033-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0033-expected) _The current spec accepts this with the first cookie name being empty and the value everything after the first =, and the second cookie name being empty and the value being `aaa`._\r\n* optional-domain0042: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/optional-domain0042-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/optional-domain0042-expected) _The current spec takes the last domain while the test expects the first domain to be used?_\r\n\r\nHope it's useful.\r\n\r\nEverything else works, although note that I have not implemented SameSite checks at this point so I cannot comment on those.",
+      "body": "I have implemented most of rfc6265bis from scratch for an HTTP client library, using the algorithms described in Section 5. I have found a few cases in WPT's `http-state` suite that do not pass and seem to go against the current editor draft of rfc6265bis (or vice versa). I figured this would be useful to share:\r\n\r\n* [ ] attribute0023: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/attribute0023-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/attribute0023-expected) _The current spec takes the last path while the test expects the first path to be used?_\r\n* [x] chromium0009: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0009-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0009-expected) _The current spec accepts this with the cookie name being empty._\r\n* [x] chromium0010: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0010-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0010-expected) _The current spec accepts this with the cookie name being empty._\r\n* [x] chromium0012: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0012-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/chromium0012-expected) _The current spec accepts this with the cookie name being empty._\r\n* [ ] disabled-chromium0020: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0020-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0020-expected) _The current spec accepts this with the cookie name being empty. Maybe this is a test of Chromium's limit on cookie names, but the current spec doesn't parse it as a name._\r\n* [ ] disabled-chromium0022: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0022-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/disabled-chromium0022-expected) _I'm not sure what should be expected to be honest._\r\n* [x] mozilla0012: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0012-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0012-expected) _I expect the second Set-Cookie to also be sent back to the server, with an empty name._\r\n* [x] mozilla0014: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0014-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0014-expected) _The current spec accepts this with the cookie name being empty._\r\n* [x] mozilla0015: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0015-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0015-expected) _The current spec accepts this with the cookie names being empty._\r\n* [x] mozilla0016: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0016-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0016-expected) _The current spec accepts this with the cookie names being empty._\r\n* [x] mozilla0017: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0017-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/mozilla0017-expected) _The current spec accepts this with the cookie names being empty, except for the last Set-Cookie which has a name provided._\r\n* [x] name0017: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0017-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0017-expected) _The current spec accepts this with the cookie name being empty and the value everything after the first =._\r\n* [x] name0023: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0023-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0023-expected) _The current spec accepts this with the cookie name being empty._\r\n* [x] name0025: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0025-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0025-expected) _The current spec accepts this with the cookie name being empty and the value everything after the first =._\r\n* [x] name0028: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0028-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0028-expected) _The current spec accepts this with the cookie name being empty and the value everything after the first =._\r\n* [x] name0031: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0031-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0031-expected) ~~The current spec accepts this with the cookie name being `\"foo;bar\"` and the value everything after the first =.~~\r\n* [x] name0032: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0032-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0032-expected) ~~The current spec accepts this with the cookie name being `\"foo\\\"bar;baz\"` and the value everything after the first =.~~\r\n* [x] name0033: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0033-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/name0033-expected) _The current spec accepts this with the first cookie name being empty and the value everything after the first =, and the second cookie name being empty and the value being `aaa`._\r\n* [ ] optional-domain0042: [Test](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/optional-domain0042-test) [Expected](https://github.com/web-platform-tests/wpt/blob/master/cookies/http-state/resources/test-files/optional-domain0042-expected) _The current spec takes the last domain while the test expects the first domain to be used?_\r\n\r\nHope it's useful.\r\n\r\nEverything else works, although note that I have not implemented SameSite checks at this point so I cannot comment on those.",
       "createdAt": "2020-03-11T11:43:40Z",
-      "updatedAt": "2020-03-31T15:30:57Z",
+      "updatedAt": "2020-04-20T11:16:34Z",
       "closedAt": null,
       "comments": [
         {
@@ -27364,6 +27364,13 @@
           "body": "About `name0031` and `name0032` you are of course right, my analysis above was incorrect. My implementation does the same as Chromium/Firefox and the draft.",
           "createdAt": "2020-03-31T11:49:49Z",
           "updatedAt": "2020-03-31T11:49:49Z"
+        },
+        {
+          "author": "essen",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "For `name0017` the updated test shows an unfortunate effect of the parsing algorithms, where the server may send a cookie without a name and a value containing equal signs, and then when it parses the cookie header it gets a cookie with name `a` and the value after the equal sign. `name0025` is a similar scenario.\r\n\r\nMaybe this issue with empty names and equal signs in the value should be mentioned specifically in the Implementation Considerations section?\r\n\r\nEdit: I've updated the description to better show which tests have been fixed in WPT, at the time of writing this comment.",
+          "createdAt": "2020-04-20T11:03:24Z",
+          "updatedAt": "2020-04-20T11:16:34Z"
         }
       ]
     },
@@ -27558,9 +27565,17 @@
       ],
       "body": "In Section 3.3.4. Tokens, there isn't an example `Example-TokenHeader:`. It's pretty trivial for this case, but since other types all provide an example, it might be nice to include one here as well.\r\n\r\nAlso, on the topic of examples, the existing examples are inconsistent with naming it \"Header\" or \"Hdr\"\r\n\r\n`Example-IntegerHeader`\r\n`Example-DecimalHeader`\r\n`Example-StringHeader`\r\n`Example-BinaryHdr`\r\n`Example-BoolHdr`",
       "createdAt": "2020-04-07T16:55:01Z",
-      "updatedAt": "2020-04-07T16:55:01Z",
+      "updatedAt": "2020-04-20T06:36:06Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "mnot",
+          "authorAssociation": "MEMBER",
+          "body": "Argh, forgot to do this in -18; will consider this a LC comment and do it then. Sorry.",
+          "createdAt": "2020-04-20T06:36:05Z",
+          "updatedAt": "2020-04-20T06:36:05Z"
+        }
+      ]
     },
     {
       "number": 1148,
@@ -27617,7 +27632,7 @@
       "id": "MDU6SXNzdWU2MDA0MTg2MTY=",
       "title": "Channel ID and Token Binding are undefined",
       "url": "https://github.com/httpwg/http-extensions/issues/1158",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "sleevi",
       "authorAssociation": "NONE",
       "assignees": [
@@ -27629,8 +27644,8 @@
       ],
       "body": "https://github.com/httpwg/http-extensions/blob/5469d515d8876196900078806d07813765aa9a49/draft-ietf-httpbis-rfc6265bis.md#L1974\r\n\r\n\"Token Binding\" and \"Channel ID\" are undefined here.\r\n\r\nIt's unclear whether informative references, such as to [RFC 8471](https://datatracker.ietf.org/doc/rfc8471/) and [draft-balfanz-tls-channelid](https://datatracker.ietf.org/doc/draft-balfanz-tls-channelid/) would be useful, or if just rewording this would be better.",
       "createdAt": "2020-04-15T16:12:15Z",
-      "updatedAt": "2020-04-15T16:48:33Z",
-      "closedAt": null,
+      "updatedAt": "2020-04-20T08:50:37Z",
+      "closedAt": "2020-04-20T08:50:37Z",
       "comments": [
         {
           "author": "sleevi",
@@ -27646,7 +27661,7 @@
       "id": "MDU6SXNzdWU2MDA0MjQ0MTk=",
       "title": "6265bis should not normatively depend on the Public Suffix List",
       "url": "https://github.com/httpwg/http-extensions/issues/1159",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "sleevi",
       "authorAssociation": "NONE",
       "assignees": [
@@ -27657,8 +27672,8 @@
       ],
       "body": "Within 6265bis, the use of the PSL is currently specified normatively:\r\nhttps://github.com/httpwg/http-extensions/blob/5469d515d8876196900078806d07813765aa9a49/draft-ietf-httpbis-rfc6265bis.md#L104-L106\r\n\r\nConcrete suggestion: Move this to an informative reference, instead, and update the text relying upon it to capture this. \r\n\r\nIn 6265, this was effectively an informative reference, per [Section 5.3's](https://tools.ietf.org/html/rfc6265#section-5.3) note. This is somewhat related to https://github.com/httpwg/http-extensions/issues/1033 which moved it into terminology, instead of Section 5.4.\r\n\r\nIn terms of \"rough consensus and running code\", in terms of widely deployed clients, the algorithm specified in the Public Suffix List is not consistently implemented, the algorithm itself is ambiguous for edge cases, and perhaps most importantly, none of the major implementations ship the same version of the Public Suffix List. Several implementations, including Google Chrome, further fork and modify that list to support their implementation needs.\r\n\r\nThus, it's really more of an informative dependency, similar to how 6265 captured this problem. [SAC070](https://www.icann.org/en/system/files/files/sac-070-en.pdf) similarly called out and acknowledged there may be many static lists used by applications, of differing versions and algorithms.",
       "createdAt": "2020-04-15T16:20:39Z",
-      "updatedAt": "2020-04-15T16:47:25Z",
-      "closedAt": null,
+      "updatedAt": "2020-04-20T08:50:37Z",
+      "closedAt": "2020-04-20T08:50:37Z",
       "comments": [
         {
           "author": "sleevi",
@@ -27673,6 +27688,30 @@
           "body": "I don't think it's pedantically \"editorial\" since it removes a normative reference, but I'm fine with doing so. Do you have a proposal for new text? If not, I'll make something up.",
           "createdAt": "2020-04-15T16:47:25Z",
           "updatedAt": "2020-04-15T16:47:25Z"
+        }
+      ]
+    },
+    {
+      "number": 1161,
+      "id": "MDU6SXNzdWU2MDMwODA1ODc=",
+      "title": "rfc6562bis draft-6 section 4.1.1 syntax says US-ASCII but is not?",
+      "url": "https://github.com/httpwg/http-extensions/issues/1161",
+      "state": "OPEN",
+      "author": "bagder",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "News in draft-06 is the %80-FF range added here:\r\n~~~\r\ncookie-octet      = %x21 / %x23-2B / %x2D-3A / %x3C-5B / %x5D-7E / %x80-FF\r\n                      ; US-ASCII characters excluding CTLs,\r\n                      ; whitespace DQUOTE, comma, semicolon,\r\n                      ; and backslash\r\n~~~\r\n... so the text below the syntax define doesn't match the syntax description anymore, as %x80-FF is certainly not US-ASCII...",
+      "createdAt": "2020-04-20T09:20:52Z",
+      "updatedAt": "2020-04-20T13:29:50Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "reschke",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "See https://github.com/httpwg/http-extensions/pull/1162",
+          "createdAt": "2020-04-20T13:29:50Z",
+          "updatedAt": "2020-04-20T13:29:50Z"
         }
       ]
     }
@@ -55694,6 +55733,25 @@
       "body": "A set of changes following comments as part of the AD review process.",
       "createdAt": "2020-04-16T11:56:51Z",
       "updatedAt": "2020-04-16T11:58:04Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1162,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDA2MDY0NzAz",
+      "title": "rfc6265bis: reformat cookie-octet ABNF and fix comment (#1161)",
+      "url": "https://github.com/httpwg/http-extensions/pull/1162",
+      "state": "OPEN",
+      "author": "reschke",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-04-20T13:29:32Z",
+      "updatedAt": "2020-04-20T13:29:32Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
