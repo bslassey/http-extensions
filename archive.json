@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-15T15:58:41.317626+00:00",
+  "timestamp": "2020-04-20T04:28:47.755798+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -18433,7 +18433,7 @@
       ],
       "body": "If I have a website that I want to allow framing by trusted third-parties (via CSP frame-ancestors), I can't use SameSite cookies to prevent CSRF attacks. This is unfortunate as it limits adoption of samesite cookies as the standard mechanism to protect against CSRF attacks.  I have run into multiple projects where I can't use same site cookies due to this issue.\r\n\r\nI would love a flag that tells the user agent to treat requests from framed pages as same site.",
       "createdAt": "2019-01-27T17:58:34Z",
-      "updatedAt": "2020-03-05T23:24:32Z",
+      "updatedAt": "2020-04-17T15:17:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -18505,6 +18505,13 @@
           "body": "These kind of discussions should take obsoletion of third-party cookies into account. We don\u2019t know details of Chrome\u2019s plans but we know the plan is to obsolete them by January 2022.",
           "createdAt": "2020-03-05T23:24:32Z",
           "updatedAt": "2020-03-05T23:24:32Z"
+        },
+        {
+          "author": "som-nitjsr",
+          "authorAssociation": "NONE",
+          "body": "I am also facing the same issue.\r\ni have site with samesite=strict cookie now i wanted to host this site it in another domain with iframe\r\ni have set the Content-Security-Policy: frame-ancestors 'self'  , other domain. but iframe is not sending the samesite cookie back to server",
+          "createdAt": "2020-04-17T15:17:03Z",
+          "updatedAt": "2020-04-17T15:17:03Z"
         }
       ]
     },
@@ -27602,6 +27609,70 @@
           "body": "Oh, I can't read. Nevermind. This is covered by `The domain string and the string are identical`.",
           "createdAt": "2020-04-10T23:45:25Z",
           "updatedAt": "2020-04-10T23:45:25Z"
+        }
+      ]
+    },
+    {
+      "number": 1158,
+      "id": "MDU6SXNzdWU2MDA0MTg2MTY=",
+      "title": "Channel ID and Token Binding are undefined",
+      "url": "https://github.com/httpwg/http-extensions/issues/1158",
+      "state": "OPEN",
+      "author": "sleevi",
+      "authorAssociation": "NONE",
+      "assignees": [
+        "mikewest"
+      ],
+      "labels": [
+        "6265bis",
+        "editorial"
+      ],
+      "body": "https://github.com/httpwg/http-extensions/blob/5469d515d8876196900078806d07813765aa9a49/draft-ietf-httpbis-rfc6265bis.md#L1974\r\n\r\n\"Token Binding\" and \"Channel ID\" are undefined here.\r\n\r\nIt's unclear whether informative references, such as to [RFC 8471](https://datatracker.ietf.org/doc/rfc8471/) and [draft-balfanz-tls-channelid](https://datatracker.ietf.org/doc/draft-balfanz-tls-channelid/) would be useful, or if just rewording this would be better.",
+      "createdAt": "2020-04-15T16:12:15Z",
+      "updatedAt": "2020-04-15T16:48:33Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "sleevi",
+          "authorAssociation": "NONE",
+          "body": "@mikewest Looks like I can't label this as 6265bis for you.",
+          "createdAt": "2020-04-15T16:12:39Z",
+          "updatedAt": "2020-04-15T16:12:39Z"
+        }
+      ]
+    },
+    {
+      "number": 1159,
+      "id": "MDU6SXNzdWU2MDA0MjQ0MTk=",
+      "title": "6265bis should not normatively depend on the Public Suffix List",
+      "url": "https://github.com/httpwg/http-extensions/issues/1159",
+      "state": "OPEN",
+      "author": "sleevi",
+      "authorAssociation": "NONE",
+      "assignees": [
+        "mikewest"
+      ],
+      "labels": [
+        "6265bis"
+      ],
+      "body": "Within 6265bis, the use of the PSL is currently specified normatively:\r\nhttps://github.com/httpwg/http-extensions/blob/5469d515d8876196900078806d07813765aa9a49/draft-ietf-httpbis-rfc6265bis.md#L104-L106\r\n\r\nConcrete suggestion: Move this to an informative reference, instead, and update the text relying upon it to capture this. \r\n\r\nIn 6265, this was effectively an informative reference, per [Section 5.3's](https://tools.ietf.org/html/rfc6265#section-5.3) note. This is somewhat related to https://github.com/httpwg/http-extensions/issues/1033 which moved it into terminology, instead of Section 5.4.\r\n\r\nIn terms of \"rough consensus and running code\", in terms of widely deployed clients, the algorithm specified in the Public Suffix List is not consistently implemented, the algorithm itself is ambiguous for edge cases, and perhaps most importantly, none of the major implementations ship the same version of the Public Suffix List. Several implementations, including Google Chrome, further fork and modify that list to support their implementation needs.\r\n\r\nThus, it's really more of an informative dependency, similar to how 6265 captured this problem. [SAC070](https://www.icann.org/en/system/files/files/sac-070-en.pdf) similarly called out and acknowledged there may be many static lists used by applications, of differing versions and algorithms.",
+      "createdAt": "2020-04-15T16:20:39Z",
+      "updatedAt": "2020-04-15T16:47:25Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "sleevi",
+          "authorAssociation": "NONE",
+          "body": "@mikewest Also editorial and related to 6265bis",
+          "createdAt": "2020-04-15T16:20:56Z",
+          "updatedAt": "2020-04-15T16:20:56Z"
+        },
+        {
+          "author": "mikewest",
+          "authorAssociation": "MEMBER",
+          "body": "I don't think it's pedantically \"editorial\" since it removes a normative reference, but I'm fine with doing so. Do you have a proposal for new text? If not, I'll make something up.",
+          "createdAt": "2020-04-15T16:47:25Z",
+          "updatedAt": "2020-04-15T16:47:25Z"
         }
       ]
     }
@@ -55602,6 +55673,27 @@
       "body": "## This PR\r\n\r\nMention trailers.\r\n\r\nSee #884",
       "createdAt": "2020-04-15T15:51:47Z",
       "updatedAt": "2020-04-15T15:51:55Z",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1160,
+      "id": "MDExOlB1bGxSZXF1ZXN0NDA0MzEzOTg3",
+      "title": "[client hints] AD review comments",
+      "url": "https://github.com/httpwg/http-extensions/pull/1160",
+      "state": "OPEN",
+      "author": "yoavweiss",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "client-hints"
+      ],
+      "body": "A set of changes following comments as part of the AD review process.",
+      "createdAt": "2020-04-16T11:56:51Z",
+      "updatedAt": "2020-04-16T11:58:04Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
