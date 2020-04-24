@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-20T13:30:21.266915+00:00",
+  "timestamp": "2020-04-24T06:32:46.542787+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -55723,7 +55723,7 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NDA0MzEzOTg3",
       "title": "[client hints] AD review comments",
       "url": "https://github.com/httpwg/http-extensions/pull/1160",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "yoavweiss",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -55732,12 +55732,34 @@
       ],
       "body": "A set of changes following comments as part of the AD review process.",
       "createdAt": "2020-04-16T11:56:51Z",
-      "updatedAt": "2020-04-16T11:58:04Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "comments": [],
-      "reviews": []
+      "updatedAt": "2020-04-24T06:31:46Z",
+      "closedAt": "2020-04-24T06:31:42Z",
+      "mergedAt": "2020-04-24T06:31:42Z",
+      "mergedBy": "yoavweiss",
+      "comments": [
+        {
+          "author": "yoavweiss",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@mnot - could you take a look?",
+          "createdAt": "2020-04-23T16:22:36Z",
+          "updatedAt": "2020-04-23T16:22:36Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3Mzk5NTcxNzQ3",
+          "commit": {
+            "abbreviatedOid": "680fffd"
+          },
+          "author": "mnot",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "LGTM",
+          "createdAt": "2020-04-24T00:50:48Z",
+          "updatedAt": "2020-04-24T00:50:48Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 1162,
