@@ -1,6 +1,6 @@
 {
   "magic": "B8n2c@e8kvfx",
-  "timestamp": "2020-04-24T06:32:46.542787+00:00",
+  "timestamp": "2020-04-27T14:37:37.096666+00:00",
   "repo": "httpwg/http-extensions",
   "labels": [
     {
@@ -27703,7 +27703,7 @@
       "labels": [],
       "body": "News in draft-06 is the %80-FF range added here:\r\n~~~\r\ncookie-octet      = %x21 / %x23-2B / %x2D-3A / %x3C-5B / %x5D-7E / %x80-FF\r\n                      ; US-ASCII characters excluding CTLs,\r\n                      ; whitespace DQUOTE, comma, semicolon,\r\n                      ; and backslash\r\n~~~\r\n... so the text below the syntax define doesn't match the syntax description anymore, as %x80-FF is certainly not US-ASCII...",
       "createdAt": "2020-04-20T09:20:52Z",
-      "updatedAt": "2020-04-20T13:29:50Z",
+      "updatedAt": "2020-04-27T14:36:50Z",
       "closedAt": null,
       "comments": [
         {
@@ -27712,6 +27712,13 @@
           "body": "See https://github.com/httpwg/http-extensions/pull/1162",
           "createdAt": "2020-04-20T13:29:50Z",
           "updatedAt": "2020-04-20T13:29:50Z"
+        },
+        {
+          "author": "mikewest",
+          "authorAssociation": "MEMBER",
+          "body": "Merged @reschke's PR. Thank you both!",
+          "createdAt": "2020-04-27T14:36:49Z",
+          "updatedAt": "2020-04-27T14:36:49Z"
         }
       ]
     }
@@ -55643,10 +55650,12 @@
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "digest-headers"
+      ],
       "body": "## This PR\r\n\r\nDeprecates SHA-1 as it's now vulnerable to collisions.\r\n\r\nFixes: #1020 ",
       "createdAt": "2020-04-15T14:27:22Z",
-      "updatedAt": "2020-04-15T15:57:53Z",
+      "updatedAt": "2020-04-24T10:05:12Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -55662,10 +55671,12 @@
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "digest-headers"
+      ],
       "body": "## This PR\r\n\r\n- adds an example of a request with no payload body (eg. HEAD)\r\n- mention an use-case in the Signature section.\r\n\r\nFixes: #1143 ",
       "createdAt": "2020-04-15T15:10:15Z",
-      "updatedAt": "2020-04-15T15:11:37Z",
+      "updatedAt": "2020-04-24T10:05:44Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -55689,14 +55700,24 @@
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "digest-headers"
+      ],
       "body": "## This PR\r\n\r\nUpdates a reference 7231->httpbis-semantics",
       "createdAt": "2020-04-15T15:24:16Z",
-      "updatedAt": "2020-04-15T15:24:16Z",
+      "updatedAt": "2020-04-24T10:04:40Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "ioggstream",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@LPardue merge if that's ok.",
+          "createdAt": "2020-04-24T10:04:18Z",
+          "updatedAt": "2020-04-24T10:04:18Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -55708,10 +55729,12 @@
       "author": "ioggstream",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "digest-headers"
+      ],
       "body": "## This PR\r\n\r\nMention trailers.\r\n\r\nSee #884",
       "createdAt": "2020-04-15T15:51:47Z",
-      "updatedAt": "2020-04-15T15:51:55Z",
+      "updatedAt": "2020-04-24T09:13:45Z",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -55766,19 +55789,33 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NDA2MDY0NzAz",
       "title": "rfc6265bis: reformat cookie-octet ABNF and fix comment (#1161)",
       "url": "https://github.com/httpwg/http-extensions/pull/1162",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "reschke",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2020-04-20T13:29:32Z",
-      "updatedAt": "2020-04-20T13:29:32Z",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
+      "updatedAt": "2020-04-27T14:36:02Z",
+      "closedAt": "2020-04-27T14:36:01Z",
+      "mergedAt": "2020-04-27T14:36:01Z",
+      "mergedBy": "mikewest",
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NDAxMDE1MTUx",
+          "commit": {
+            "abbreviatedOid": "81973eb"
+          },
+          "author": "mikewest",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "LGTM, thank you.",
+          "createdAt": "2020-04-27T14:35:56Z",
+          "updatedAt": "2020-04-27T14:35:56Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
